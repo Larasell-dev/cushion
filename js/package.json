@@ -2,7 +2,7 @@
     "name": "@larasell-dev/form-drafts",
     "version": "0.1.0",
     "description": "React hook for form draft persistence with Laravel + Inertia, for use with the larasell/form-drafts composer package.",
-    "license": "proprietary",
+    "license": "MIT",
     "type": "module",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",

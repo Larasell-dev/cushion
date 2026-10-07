@@ -1,7 +1,7 @@
 {
     "name": "larasell/form-drafts",
     "description": "Form draft persistence for Laravel: server-backed auto-save for Inertia forms.",
-    "license": "proprietary",
+    "license": "MIT",
     "type": "library",
     "require": {
         "php": "^8.3",
