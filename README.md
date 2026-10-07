@@ -1,14 +1,13 @@
 # Form drafts
 
-This package helps you auto-saving forms, so users won't loose their
-data when accidently closing a tab.
+This package auto-saves forms, so users won't lose their
+data when they accidentally close a tab.
 
 [See the full documentation](https://www.larasell.dev/docs/form-drafts)
 
 ## Installation
 
-For this to work you need to install two packages. One for PHP the 
-other for Javascript/Typescript.
+Install two packages: one for PHP, the other for JavaScript/TypeScript.
 
 ```bash
 composer require larasell-dev/form-drafts
@@ -56,8 +55,7 @@ Route::get(/* ... */);
 
 ### Rendering forms
 
-Now it's time to pass the form data from your controller
-to the client:
+Pass the form data from your controller to the client:
 
 ```php
 use App\Http\Forms\CheckoutForm;
@@ -75,8 +73,7 @@ public function show(Request $request): Response
 }
 ```
 
-The last step is to fill your form with the data from
-the draft:
+The last step fills your form with the data from the draft:
 
 ```js
 import { useFormDraft } from '@larasell-dev/form-drafts';
