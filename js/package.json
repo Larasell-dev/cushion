@@ -1,0 +1,30 @@
+{
+    "name": "@larasell-dev/form-drafts",
+    "version": "0.1.0",
+    "description": "React hook for form draft persistence with Laravel + Inertia, for use with the larasell/form-drafts composer package.",
+    "license": "proprietary",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit"
+    },
+    "peerDependencies": {
+        "@inertiajs/react": "^2.0.0 || ^3.0.0",
+        "react": "^18.0.0 || ^19.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^19.0.0",
+        "typescript": "^5.6.0"
+    }
+}
