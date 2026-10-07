@@ -1,0 +1,21 @@
+# Exclude files from the release archive (/dist)
+
+/.git export-ignore
+/.github export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+
+# Tests
+/tests export-ignore
+/phpunit.xml.dist export-ignore
+
+# JS package (published separately via npm)
+/js export-ignore
+
+# Development files
+/.phpunit.cache export-ignore
+/.phpunit.result.cache export-ignore
+/composer.lock export-ignore
+
+# Documentation is available in the repository
+/CONTRIBUTING.md export-ignore
