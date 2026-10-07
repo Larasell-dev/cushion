@@ -1,5 +1,6 @@
 {
     "name": "larasell-dev/cushion",
+    "version": "0.1.1",
     "description": "Form draft persistence for Laravel: server-backed auto-save for Inertia forms.",
     "license": "MIT",
     "type": "library",
