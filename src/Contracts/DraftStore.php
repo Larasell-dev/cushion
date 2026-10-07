@@ -1,8 +1,8 @@
 <?php
 
-namespace Larasell\FormDrafts\Contracts;
+namespace Larasell\Cushion\Contracts;
 
-use Larasell\FormDrafts\Form;
+use Larasell\Cushion\Form;
 
 /**
  * Persists a form's draft. Implementations decide where drafts live —

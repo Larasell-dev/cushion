@@ -1,9 +1,9 @@
 <?php
 
-namespace Larasell\FormDrafts;
+namespace Larasell\Cushion;
 
 use Illuminate\Support\Facades\Cache;
-use Larasell\FormDrafts\Contracts\DraftStore;
+use Larasell\Cushion\Contracts\DraftStore;
 
 /**
  * Persists form drafts in the cache with a limited lifetime, so

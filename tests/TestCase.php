@@ -1,12 +1,12 @@
 <?php
 
-namespace Larasell\FormDrafts\Tests;
+namespace Larasell\Cushion\Tests;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route as RouteFacade;
-use Larasell\FormDrafts\Form;
-use Larasell\FormDrafts\FormDraftsServiceProvider;
+use Larasell\Cushion\CushionServiceProvider;
+use Larasell\Cushion\Form;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 abstract class TestCase extends TestbenchTestCase
@@ -17,7 +17,7 @@ abstract class TestCase extends TestbenchTestCase
      */
     protected function getPackageProviders($app): array
     {
-        return [FormDraftsServiceProvider::class];
+        return [CushionServiceProvider::class];
     }
 
     /**

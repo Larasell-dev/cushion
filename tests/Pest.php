@@ -1,6 +1,6 @@
 <?php
 
-use Larasell\FormDrafts\Tests\TestCase;
+use Larasell\Cushion\Tests\TestCase;
 
 /*
 |--------------------------------------------------------------------------

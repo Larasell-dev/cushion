@@ -1,17 +1,17 @@
-# Form drafts
+# Cushion
 
 This package auto-saves forms, so users won't lose their
 data when they accidentally close a tab.
 
-[See the full documentation](https://www.larasell.dev/docs/form-drafts)
+[See the full documentation](https://www.larasell.dev/docs/cushion)
 
 ## Installation
 
 Install two packages: one for PHP, the other for JavaScript/TypeScript.
 
 ```bash
-composer require larasell-dev/form-drafts
-npm install @larasell-dev/form-drafts
+composer require larasell-dev/cushion
+npm install @larasell-dev/cushion
 ```
 
 ## Quickstart
@@ -20,7 +20,7 @@ npm install @larasell-dev/form-drafts
 
 ```php
 use App\Models\User;
-use Larasell\FormDrafts\Form;
+use Larasell\Cushion\Form;
 
 final class CheckoutForm extends Form
 {
@@ -45,7 +45,7 @@ Register the forms inside your `web.php` file:
 
 ```php
 use App\Http\Forms\CheckoutForm;
-use Larasell\FormDrafts\Form;
+use Larasell\Cushion\Form;
 
 Form::add(CheckoutForm::class);
 
@@ -76,7 +76,7 @@ public function show(Request $request): Response
 The last step fills your form with the data from the draft:
 
 ```js
-import { useFormDraft } from '@larasell-dev/form-drafts';
+import { useFormDraft } from '@larasell-dev/cushion';
 
 function Checkout({ billing }) {
   const { track, set, clear } = useFormDraft('checkout', billing);

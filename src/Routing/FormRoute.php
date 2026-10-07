@@ -1,10 +1,10 @@
 <?php
 
-namespace Larasell\FormDrafts\Routing;
+namespace Larasell\Cushion\Routing;
 
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
-use Larasell\FormDrafts\Http\Controllers\FormDraftController;
+use Larasell\Cushion\Http\Controllers\FormDraftController;
 
 /**
  * Fluent builder for a form's draft routes, mirroring how Laravel's

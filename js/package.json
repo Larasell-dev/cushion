@@ -1,7 +1,7 @@
 {
-    "name": "@larasell-dev/form-drafts",
+    "name": "@larasell-dev/cushion",
     "version": "0.1.0",
-    "description": "React hook for form draft persistence with Laravel + Inertia, for use with the larasell/form-drafts composer package.",
+    "description": "React hook for form draft persistence with Laravel + Inertia, for use with the larasell-dev/cushion composer package.",
     "license": "MIT",
     "type": "module",
     "main": "./dist/index.js",

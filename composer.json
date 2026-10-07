@@ -1,5 +1,5 @@
 {
-    "name": "larasell/form-drafts",
+    "name": "larasell-dev/cushion",
     "description": "Form draft persistence for Laravel: server-backed auto-save for Inertia forms.",
     "license": "MIT",
     "type": "library",
@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Larasell\\FormDrafts\\": "src/"
+            "Larasell\\Cushion\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Larasell\\FormDrafts\\Tests\\": "tests/",
+            "Larasell\\Cushion\\Tests\\": "tests/"
         }
     },
     "config": {
@@ -37,7 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Larasell\\FormDrafts\\FormDraftsServiceProvider"
+                "Larasell\\Cushion\\CushionServiceProvider"
             ]
         }
     },

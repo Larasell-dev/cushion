@@ -1,9 +1,9 @@
 <?php
 
-namespace Larasell\FormDrafts\Http\Controllers;
+namespace Larasell\Cushion\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Larasell\FormDrafts\Form;
+use Larasell\Cushion\Form;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

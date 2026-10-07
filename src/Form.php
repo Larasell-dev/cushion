@@ -1,12 +1,12 @@
 <?php
 
-namespace Larasell\FormDrafts;
+namespace Larasell\Cushion;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
-use Larasell\FormDrafts\Contracts\DraftStore;
-use Larasell\FormDrafts\Routing\FormRoute;
+use Larasell\Cushion\Contracts\DraftStore;
+use Larasell\Cushion\Routing\FormRoute;
 
 /**
  * Defines the shape of a form: its fields, their validation rules,
@@ -66,7 +66,7 @@ abstract class Form
 
     /**
      * @param  string|null  $draftDriver  Draft store driver name from
-     *                                    config/form-drafts.php; null uses the configured default.
+     *                                    config/cushion.php; null uses the configured default.
      */
     public function __construct(
         protected readonly ?Model $model = null,

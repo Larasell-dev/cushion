@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Cache;
-use Larasell\FormDrafts\Tests\TestForm;
-use Larasell\FormDrafts\Tests\TestUser;
+use Larasell\Cushion\Tests\TestForm;
+use Larasell\Cushion\Tests\TestUser;
 
 beforeEach(function (): void {
-    config(['form-drafts.driver' => 'cache']);
+    config(['cushion.driver' => 'cache']);
 });
 
 it('saves a partial draft and merges it with existing values', function (): void {
     $user = TestUser::create(['email' => 'test@example.com', 'password' => 'secret']);
-    $key = "form-draft:Larasell\\FormDrafts\\Tests\\TestForm:{$user->id}";
+    $key = "form-draft:Larasell\\Cushion\\Tests\\TestForm:{$user->id}";
 
     test()->actingAs($user)
         ->patch(route('forms.test.draft'), ['company' => 'ACME GmbH'])
@@ -38,7 +38,7 @@ it('validates draft data against the form rules', function (): void {
 
 it('clears the draft', function (): void {
     $user = TestUser::create(['email' => 'test@example.com', 'password' => 'secret']);
-    $key = "form-draft:Larasell\\FormDrafts\\Tests\\TestForm:{$user->id}";
+    $key = "form-draft:Larasell\\Cushion\\Tests\\TestForm:{$user->id}";
 
     test()->actingAs($user)
         ->patch(route('forms.test.draft'), ['company' => 'ACME GmbH'])

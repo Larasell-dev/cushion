@@ -1,13 +1,13 @@
 # Contributing
 
-Thanks for considering contributing to `larasell/form-drafts`!
+Thanks for considering contributing to `larasell-dev/cushion`!
 
 ## Development Setup
 
 The package lives in two parts:
 
-- **PHP package** (`larasell/form-drafts`) — the Laravel draft engine, at the repository root
-- **npm package** (`@larasell-dev/form-drafts`) — the React/Inertia hooks, in [`js/`](js/)
+- **PHP package** (`larasell-dev/cushion`) — the Laravel draft engine, at the repository root
+- **npm package** (`@larasell-dev/cushion`) — the React/Inertia hooks, in [`js/`](js/)
 
 ### Requirements
 

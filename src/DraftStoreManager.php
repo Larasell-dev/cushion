@@ -1,12 +1,12 @@
 <?php
 
-namespace Larasell\FormDrafts;
+namespace Larasell\Cushion;
 
 use Illuminate\Support\Manager;
-use Larasell\FormDrafts\Contracts\DraftStore;
+use Larasell\Cushion\Contracts\DraftStore;
 
 /**
- * Resolves draft store drivers from config/form-drafts.php.
+ * Resolves draft store drivers from config/cushion.php.
  *
  * ```php
  * $store = app(DraftStoreManager::class)->driver(); // default driver
@@ -16,13 +16,13 @@ class DraftStoreManager extends Manager
 {
     public function getDefaultDriver(): string
     {
-        return config('form-drafts.driver', 'cache');
+        return config('cushion.driver', 'cache');
     }
 
     protected function createCacheDriver(): DraftStore
     {
         return new CacheDraftStore(
-            ttl: config('form-drafts.ttl'),
+            ttl: config('cushion.ttl'),
         );
     }
 

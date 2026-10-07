@@ -1,6 +1,6 @@
 <?php
 
-namespace Larasell\FormDrafts\Routing;
+namespace Larasell\Cushion\Routing;
 
 use Illuminate\Routing\Router;
 

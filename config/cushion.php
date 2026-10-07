@@ -15,8 +15,8 @@ return [
     |
     */
 
-    'driver' => env('FORM_DRAFTS_DRIVER', 'cache'),
+    'driver' => env('CUSHION_DRIVER', 'cache'),
 
-    'ttl' => env('FORM_DRAFTS_TTL', 60 * 60 * 24 * 30),
+    'ttl' => env('CUSHION_TTL', 60 * 60 * 24 * 30),
 
 ];

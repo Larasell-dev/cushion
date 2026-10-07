@@ -1,6 +1,6 @@
 <?php
 
-use Larasell\FormDrafts\Tests\TestForm;
+use Larasell\Cushion\Tests\TestForm;
 
 it('derives the draft key from the class basename', function (): void {
     expect(TestForm::draftKey())->toBe('test');
