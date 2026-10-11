@@ -82,15 +82,27 @@ export function useFormDraft<T extends DraftData>(
     });
 
     /**
+     * Drop pending edits and abort an in-flight save. Call when the
+     * owning form is submitted, so a debounced or in-flight draft
+     * save cannot resurrect the draft the server clears on submit.
+     */
+    const cancel = () => {
+        flush.cancel();
+        pending.current = {};
+
+        http.cancel();
+    };
+
+    /**
      * Remove the stored draft.
      */
     const clear = () => {
-        pending.current = {};
+        cancel();
 
         void http.delete(draftUrl(key, baseUrl));
     };
 
-    return { track, set, clear };
+    return { track, set, clear, cancel };
 }
 
 /**
