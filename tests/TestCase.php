@@ -4,6 +4,7 @@ namespace Larasell\Cushion\Tests;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route as RouteFacade;
 use Larasell\Cushion\CushionServiceProvider;
 use Larasell\Cushion\Form;
@@ -36,6 +37,10 @@ abstract class TestCase extends TestbenchTestCase
         RouteFacade::middleware('auth')->group(function (): void {
             TestForm::add(TestForm::class);
         });
+
+        RouteFacade::middleware(StartSession::class)->group(function (): void {
+            GuestForm::add(GuestForm::class);
+        });
     }
 }
 
@@ -63,6 +68,16 @@ class TestForm extends Form
     {
         return [
             'city' => 'Vienna',
+        ];
+    }
+}
+
+class GuestForm extends Form
+{
+    public function fields(): array
+    {
+        return [
+            'message' => 'string|max:5000|required',
         ];
     }
 }

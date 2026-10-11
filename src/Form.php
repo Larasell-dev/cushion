@@ -71,7 +71,53 @@ abstract class Form
     public function __construct(
         protected readonly ?Model $model = null,
         protected readonly ?string $draftDriver = null,
-    ) {}
+    ) {
+        $this->ownerKey = $this->resolveOwnerKey();
+    }
+
+    /**
+     * The key scoping this form's draft to its owner, bound eagerly
+     * at construction: the owning model's key, the authenticated
+     * user's id, or the guest's session id. The shared 'guest'
+     * fallback only applies outside a request (e.g. console).
+     */
+    protected string|int $ownerKey;
+
+    /**
+     * A form bound to the current owner: the authenticated user,
+     * or the guest's session. Because the owner is resolved
+     * eagerly, the instance keeps its binding even if the
+     * request state changes afterwards (e.g. a login).
+     */
+    public static function get(): static
+    {
+        return new static;
+    }
+
+    /**
+     * The key this form's draft is scoped to.
+     */
+    public function draftOwnerKey(): string|int
+    {
+        return $this->ownerKey;
+    }
+
+    /**
+     * Resolve the draft owner key at construction time. Override to
+     * scope drafts differently; the model wins over ambient state.
+     */
+    protected function resolveOwnerKey(): string|int
+    {
+        if ($this->model !== null) {
+            return $this->model->getKey();
+        }
+
+        if (auth()->check()) {
+            return auth()->id();
+        }
+
+        return app('session.store')->getId();
+    }
 
     /**
      * The draft store for this form, resolved from the configured
@@ -186,6 +232,25 @@ abstract class Form
     public function draft(): array
     {
         return $this->draftStore()->read($this);
+    }
+
+    /**
+     * Move this form's draft to another owner, e.g. promoting a
+     * guest draft to the authenticated user after login. Returns
+     * the target form for chaining.
+     */
+    public function transfer(Model $to): static
+    {
+        $target = new static($to, $this->draftDriver);
+
+        $draft = $this->draft();
+
+        if ($draft !== []) {
+            $target->saveDraft($draft);
+            $this->clearDraft();
+        }
+
+        return $target;
     }
 
     /**

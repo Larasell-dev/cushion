@@ -39,17 +39,15 @@ class CacheDraftStore implements DraftStore
     }
 
     /**
-     * A draft key scoped to the form and its owning model.
+     * A draft key scoped to the form and its owner.
      */
     protected function key(Form $form): string
     {
-        $model = $form->model();
-
         return sprintf(
             '%s:%s:%s',
             $this->prefix,
             $form::class,
-            $model !== null ? $model->getKey() : 'guest',
+            $form->draftOwnerKey(),
         );
     }
 }

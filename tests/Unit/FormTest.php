@@ -19,3 +19,9 @@ it('keeps required rules for submit rules', function (): void {
     expect($form->submitRules())->company->toBe(['string', 'max:255', 'required'])
         ->and($form->submitRules())->city->toBe(['nullable', 'string', 'max:255']);
 });
+
+it('binds to the session id when no model is given', function (): void {
+    $form = new TestForm;
+
+    expect($form->draftOwnerKey())->toBe(session()->getId());
+});
