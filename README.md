@@ -3,7 +3,7 @@
 This package auto-saves forms, so users won't lose their
 data when they accidentally close a tab.
 
-[See the full documentation](https://www.larasell.dev/docs/cushion)
+[See the full documentation](https://larasell.dev/docs/packages/cushion)
 
 ## Installation
 
