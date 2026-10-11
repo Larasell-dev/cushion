@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ namespace }};
+
+use Larasell\Cushion\Form;
+
+final class {{ class }} extends Form
+{
+    /**
+     * @return array<string, string|object|array<int, string|object>>
+     */
+    public function fields(): array
+    {
+        return [
+            //
+        ];
+    }
+}
