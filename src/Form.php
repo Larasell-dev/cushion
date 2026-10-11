@@ -23,10 +23,10 @@ use Larasell\Cushion\Routing\FormRoute;
  *         ];
  *     }
  *
- *     public function defaults(): array
+ *     public function defaults(User $user): array
  *     {
  *         return [
- *             'first_name' => fn (User $user) => str($user->name)->beforeLast(' '),
+ *             'first_name' => str($user->name)->beforeLast(' '),
  *         ];
  *     }
  * }
@@ -145,17 +145,6 @@ abstract class Form
      */
     abstract public function fields(): array;
 
-    /**
-     * Contextual default values, resolved with the arguments given to
-     * Form::hydrate(). Ignored when the stored draft holds a value.
-     *
-     * @return array<string, mixed>
-     */
-    public function defaults(): array
-    {
-        return [];
-    }
-
     // -- Validation ------------------------------------------------------------
 
     /**
@@ -257,35 +246,34 @@ abstract class Form
      * The form's values for rendering: stored draft values win over
      * contextual defaults.
      *
-     * @param  mixed  ...$context  Arguments passed to default callables.
+     * The optional `defaults()` method receives the same arguments
+     * and returns the default values for the fields:
+     *
+     * ```php
+     *     public function defaults(User $user): array
+     *     {
+     *         return [
+     *             'first_name' => str($user->name)->beforeLast(' '),
+     *         ];
+     *     }
+     * ```
+     *
+     * @param  mixed  ...$context  Arguments forwarded to defaults().
      * @return array<string, mixed>
      */
     public function hydrate(mixed ...$context): array
     {
         $draft = $this->draft();
+        $defaults = method_exists($this, 'defaults') ? $this->defaults(...$context) : [];
 
         $values = [];
 
         foreach (array_keys($this->fields()) as $name) {
             $values[$name] = array_key_exists($name, $draft) && $draft[$name] !== null
                 ? $draft[$name]
-                : $this->resolveDefault($name, array_values($context));
+                : ($defaults[$name] ?? null);
         }
 
         return $values;
-    }
-
-    /**
-     * @param  list<mixed>  $context
-     */
-    private function resolveDefault(string $name, array $context): mixed
-    {
-        $default = $this->defaults()[$name] ?? null;
-
-        if (is_callable($default)) {
-            return $default(...$context);
-        }
-
-        return $default;
     }
 }

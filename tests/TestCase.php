@@ -64,7 +64,7 @@ class TestForm extends Form
         ];
     }
 
-    public function defaults(): array
+    public function defaults(User $user): array
     {
         return [
             'city' => 'Vienna',
