@@ -19,6 +19,9 @@ class MakeFormCommand extends GeneratorCommand
 
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $rootNamespace.'\Http\Forms';
+        return $rootNamespace.'\\'.match (true) {
+            is_dir(app_path('Forms')) => 'Forms',
+            default => 'Http\\Forms',
+        };
     }
 }

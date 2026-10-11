@@ -3,6 +3,23 @@
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 
+it('uses the forms directory when it already exists', function (): void {
+    File::ensureDirectoryExists(app_path('Forms'));
+
+    try {
+        $formPath = app_path('Forms/BillingForm.php');
+
+        expect(File::exists($formPath))->toBeFalse();
+
+        Artisan::call('make:form', ['name' => 'BillingForm']);
+
+        expect(File::exists($formPath))->toBeTrue();
+        expect(file_get_contents($formPath))->toContain('namespace App\Forms;');
+    } finally {
+        File::deleteDirectory(app_path('Forms'));
+    }
+});
+
 it('creates a new form class', function (): void {
     $formPath = app_path('Http/Forms/ContactForm.php');
 
