@@ -3,6 +3,7 @@
 namespace Larasell\Cushion;
 
 use Illuminate\Support\ServiceProvider;
+use Larasell\Cushion\Console\MakeFormCommand;
 use Larasell\Cushion\Routing\DraftRouteMacro;
 
 class CushionServiceProvider extends ServiceProvider
@@ -21,5 +22,9 @@ class CushionServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/cushion.php' => $this->app->configPath('cushion.php'),
         ], 'cushion.config');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([MakeFormCommand::class]);
+        }
     }
 }
