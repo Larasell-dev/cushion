@@ -32,10 +32,10 @@ jobs:
           composer update --${{ matrix.stability }} --no-interaction --prefer-dist
 
       - name: Run tests
-        run: vendor/bin/pest
+        run: composer test
 
       - name: Check code style
-        run: vendor/bin/pint --test
+        run: composer lint -- --test
 
   js-tests:
     runs-on: ubuntu-latest
