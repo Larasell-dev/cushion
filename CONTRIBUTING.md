@@ -19,7 +19,7 @@ The package lives in two parts:
 
 ```bash
 composer install
-vendor/bin/pest
+composer test
 ```
 
 Tests run on Orchestra Testbench, so no Laravel application is needed. The test suite boots a minimal app with the package's service provider, a test form, and an in-memory SQLite database.
@@ -41,7 +41,7 @@ npm run typecheck   # tsc --noEmit only
 - Run the narrowest set covering your change:
 
   ```bash
-  vendor/bin/pest tests/Feature/FormDraftTest.php
+  composer test -- tests/Feature/FormDraftTest.php
   ```
 
 ## Pull Requests
@@ -51,8 +51,8 @@ npm run typecheck   # tsc --noEmit only
 3. Run the checks below and make sure they pass:
 
    ```bash
-   vendor/bin/pint
-   vendor/bin/pest
+   composer lint
+   composer test
    cd js && npm run build
    ```
 
