@@ -73,7 +73,7 @@ export function useFormDraft<T extends DraftData>(
      * debounced draft persistence.
      */
     const track = <K extends keyof T>(field: K) => ({
-        defaultValue: data[field],
+        defaultValue: data[field] ?? undefined,
         onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
             set(field, event.target.value as T[K]),
     });
